@@ -5,6 +5,7 @@ on:
 
 jobs:
   check:
+    name: Lint python files
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
