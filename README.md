@@ -9,7 +9,7 @@ Note! This is still work in progress, expect a few bugs!
 Install the required dependencies using pip with the following command
 
 ```sh
-pip install midiutil PIL
+pip install midiutil pillow
 ```
 
 ## Using
