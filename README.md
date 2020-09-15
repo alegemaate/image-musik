@@ -2,7 +2,7 @@
 
 Note! This is still work in progress, expect a few bugs!
 
-![Build Status](https://github.com/alegemaate/image-musik/workflows/flake8/badge.svg)
+![Flake8](https://github.com/alegemaate/image-musik/workflows/flake8/badge.svg)
 
 ## Installation
 
