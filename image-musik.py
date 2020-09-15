@@ -8,7 +8,7 @@
 # License: MIT
 #
 
-"""This module is the entry point of Image Musik"""
+"""This module is the entry point of Image Musik."""
 
 from PIL import Image
 from enum import Enum
@@ -17,29 +17,30 @@ import sys
 
 
 class Colour(Enum):
-    """ Enumerates channels for readability """
+    """Enumerates channels for readability."""
+
     RED = 0
     GREEN = 1
     BLUE = 2
 
 
 def map_sample_to_midi(sample):
-    """ Cut sample in half to bring 8 bit range to 7 bits """
+    """Cut sample in half to bring 8 bit range to 7 bits."""
     return sample >> 1
 
 
 def map_sample_to_duration(sample):
-    """ Map to 4 quantizations of notes """
+    """Map to 4 quantizations of notes."""
     return ((sample >> 6) + 1) / 4
 
 
 def map_sample_to_volume(sample):
-    """ Map sample to 'volume' range """
+    """Map sample to 'volume' range."""
     return (sample >> 1) + 32
 
 
 def generate_midi(notes, instrument, tempo, file_name):
-    """ Generate midi file from notes array """
+    """Generate midi file from notes array."""
     track = 0
     channel = 0
     time = 0
@@ -59,7 +60,7 @@ def generate_midi(notes, instrument, tempo, file_name):
 
 
 def read(band):
-    """ Read individual band from image """
+    """Read individual band from image."""
     output = []
 
     for colour in band:
@@ -69,8 +70,7 @@ def read(band):
 
 
 def open_image(file_name, instrument, tempo):
-    """ Open and process image """
-
+    """Open and process image."""
     # Open and resize image
     print("Reading and converting image " + file_name)
     image = Image.open(file_name)
@@ -107,8 +107,7 @@ def open_image(file_name, instrument, tempo):
 
 
 def main():
-    """ Entry point, does parameter validation """
-
+    """Entry point, does parameter validation."""
     if len(sys.argv) != 4:
         # Ensure length of args correct before using
         print("Invalid argument list, please provide path to image, \
