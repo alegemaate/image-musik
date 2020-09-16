@@ -1,6 +1,7 @@
 # Image Musik
 
 ![Flake8](https://github.com/alegemaate/image-musik/workflows/flake8/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8b56ded2e30dd170b7e8/maintainability)](https://codeclimate.com/github/alegemaate/image-musik/maintainability)
 
 ## Installation
 

@@ -106,6 +106,7 @@ def open_image(file_name, instrument, tempo):
     generate_midi(notes, instrument, tempo, file_name)
 
 
+<<<<<<< HEAD
 def parse_int_parameter(value, low, high):
     """Parse system args and cast to int."""
     value = int(value)
@@ -114,6 +115,8 @@ def parse_int_parameter(value, low, high):
     return value
 
 
+=======
+>>>>>>> 29da6b1beb8f99198f3589f904e7419d99276eb3
 def main():
     """Entry point, does parameter validation."""
     if len(sys.argv) != 4:
