@@ -91,9 +91,9 @@ def open_image(file_name, instrument, tempo):
 
     # Create note array
     print("Setting up notes")
+
     notes = []
     num_samples = len(r_output)
-
     # We map the 3 channels to pitch duration and volume
     for index in range(0, num_samples):
         pitch = map_sample_to_midi(r_output[index])
@@ -106,38 +106,43 @@ def open_image(file_name, instrument, tempo):
     generate_midi(notes, instrument, tempo, file_name)
 
 
+def parse_int_parameter(value, low, high):
+    """Parse system args and cast to int."""
+    value = int(value)
+    if value < low or value > high:
+        raise "Invalid range"
+    return value
+
+
 def main():
     """Entry point, does parameter validation."""
     if len(sys.argv) != 4:
         # Ensure length of args correct before using
         print("Invalid argument list, please provide path to image, \
             an instrument (0-127) and a tempo (1-1000)")
-    else:
-        # Alias args
-        file = sys.argv[1]
-        instrument = sys.argv[2]
-        tempo = sys.argv[3]
+        exit()
 
-        # Check instrument range
-        try:
-            instrument = int(instrument)
-            if instrument < 0 or instrument > 127:
-                raise "Invalid range"
-        except Exception:
-            print("Instrument must be a number in range (0-127)")
-            exit()
+    # Alias args
+    file = sys.argv[1]
+    instrument = sys.argv[2]
+    tempo = sys.argv[3]
 
-        # Check tempo range
-        try:
-            tempo = int(tempo)
-            if tempo < 1 or tempo > 1000:
-                raise "Invalid range"
-        except Exception:
-            print("Tempo must be a number in range (1-1000)")
-            exit()
+    # Check instrument range
+    try:
+        instrument = parse_int_parameter(instrument, 0, 127)
+    except Exception:
+        print("Instrument must be a number in range (0-127)")
+        exit()
 
-        # Open image
-        open_image(file, instrument, tempo)
+    # Check tempo range
+    try:
+        tempo = parse_int_parameter(tempo, 1, 1000)
+    except Exception:
+        print("Tempo must be a number in range (1-1000)")
+        exit()
+
+    # Open image
+    open_image(file, instrument, tempo)
 
 
 # Start program
